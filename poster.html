@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Escape Room: Enor Edition</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0; height:100%}
+        rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.5}
+        li { padding: 5px 0px; }
+
+        .img {
+            background-color: white;
+            background-size: contain;
+            background-attachment: fixed;
+        }
+
+        .content {
+            min-height: 100vh;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 5%; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 70vh;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .channel-input {
+            position: absolute;
+            display: block;
+            top: 23%;
+            left: 42%
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="my_audio" src="audio/chipi.mp3" loop="loop"></audio>
+    <div class="img">
+        <div class="content"></div>
+
+        <div id="story" class="modal" style="display:block">
+            <div class="modal-content">
+                <p> You and your friends see a light at the end of the hallway and make a run for it. </p>
+                <p> <i> I CAN FINALLY GO TAKE A SH*T! </i> </p>
+                <p> As you get closer, you come up to a wall of pictures which you sincerely hope is not hiding more puzzles… </p>
+                <p> <i> !@#$ I REALLY NEED TO GOOOOOOOOOOOOOOOOOOOOOOO… Wait a minute… What is THAT?! </i> </p>
+            </div>
+        </div>
+
+        <div id="story2" class="modal" style="display: none;">
+            <div class="modal-content">
+                <p> HAPPY 18TH BIRTHDAY, ENORRRRRRRR. We hope you and your friends had fun playing this game. 
+                    We definitely did not procrastinate and make this one week before your birthday… </p>
+                    
+                <p> If you were wondering why Patty was laughing to herself, it was because she was laughing at Jenny's ideas 
+                    to make the escape room harder. </p>            
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // var story = document.getElementById("story");
+        var story2 = document.getElementById("story2");
+        
+        window.onclick = function(event) {
+            if (event.target == story) {
+                story.style.display = "none";
+                document.getElementsByClassName("img")[0].style.backgroundImage = "url('pics/collage.png')"
+                story2.style.display = "block"
+                document.getElementById("my_audio").play();
+            }
+            else if (event.target == story2) {
+                story2.style.display = "none";
+            }
+        }
+        // story2.addEventListener('onclick', function() {
+        //     alert("clicked")
+        // })
+        
+    </script>
+
+</body>
+</html>

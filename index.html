@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Escape Room: Enor Edition</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0; height:100%}
+        rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.5}
+        li { padding: 5px 0px; }
+
+        .img {
+            /* background: url("tv_room/tv_static.jpg") no-repeat fixed 50%; */
+            background-color: black;
+            background-size: cover;
+        }
+
+        .content {
+            min-height: 100vh;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 5%; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .modal-content p {
+            color: white;
+        }
+
+        .modal-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70vw;
+        }
+
+        table {
+            margin-left: 45%; 
+        }
+
+        .container {
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    <audio id="my_audio" src="Angel.mp3" loop="loop"></audio>
+    <div class="img">
+        <div class="content"></div>
+        <div id="story" class="modal" style="display:block">
+            <div class="modal-content" style="background-color: black">
+                <p> Blinking into confusion, you and your friends awaken to find yourselves in an unfamiliar, dark room. </p>
+                <p> <i> We were just on our way to Eleanor's birthday party… what happened?! </i> </p>
+                <p> Hyperventilating and on the verge of a mental breakdown, you realize you and your friends must quickly search for a way out or else you'll miss the party. </p>
+                <p> <i> WHERE'S THE LIGHT SWITCH?! </i> </p>
+                <br>
+                <p style="color:gray"> Created by: Jenny Wen, Patricia Tran </p>
+            </div>
+        </div>
+
+        <img id="flute" src="pics/flute.png" style="display:none;" onclick="puzzle1()"/></img>
+        <div id="puzzle1" class="modal">
+            <div class="modal-content">
+                <img src="pics/music/flutekeys.jpg" class="modal-image">
+                <table>
+                    <tr>
+                        <td> <input type = "checkbox" name = "Lb"> </td>
+                        <td> <input type = "checkbox" name = "LBb"> </td>
+                        <td> <input type = "checkbox" name = "L1"> </td>
+                        <td> <input type = "checkbox" name = "L2"> </td>
+                        <td> <input type = "checkbox" name = "L3"> </td>
+                        <td> <input type = "checkbox" name = "LG#"> </td>
+                        <td> | </td>
+                        <td> <input type = "checkbox" name = "RBb"> </td>
+                        <td> <input type = "checkbox" name = "R1"> </td>
+                        <td> <input type = "checkbox" name = "RD"> </td>
+                        <td> <input type = "checkbox" name = "R2"> </td>
+                        <td> <input type = "checkbox" name = "RD#"> </td>
+                        <td> <input type = "checkbox" name = "R3"> </td>
+                        <td> <input type = "checkbox" name = "REb"> </td>
+                        <td> <input type = "checkbox" name = "RC#"> </td>
+                        <td> <input type = "checkbox" name = "RC"> </td>
+                        <td> <input type = "checkbox" name = "RB"> </td>
+                        <td> <input type = "checkbox" name = "Rb"> </td>
+                        <td> <button onclick="p1q()"> submit </button> </td>
+                    </tr>
+                    <tr>
+                        <td> Bb </td>
+                        <td> B  </td>
+                        <td> 1  </td>
+                        <td> 2  </td>
+                        <td> 3  </td>
+                        <td> G# </td>
+                        <td> |  </td>
+                        <td> Bb </td>
+                        <td> 1  </td>
+                        <td> D  </td>
+                        <td> 2  </td>
+                        <td> D# </td>
+                        <td> 3  </td>
+                        <td> Eb </td>
+                        <td> C# </td>
+                        <td> C  </td>
+                        <td> B  </td>
+                        <td> ß  </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 20%; right: 12%">
+            <img src="pics/switch.jpg" onclick="toggle()" id="lightswitch" style="opacity: 0.05; height:10vh">
+        </div>
+
+        <div style="position: absolute; top: 80%; right: 12%">
+            <a id="door" style="cursor:default; display:none" href="walls.html">
+                <svg width="5vw" height="12vh"><rect width="100%" height="100%"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        var p1 = document.getElementById("puzzle1");
+        var story = document.getElementById("story");
+        
+        window.onclick = function(event) {
+            if (event.target == p1 || event.target == story) {
+                p1.style.display = "none";
+                story.style.display = "none";
+            }
+        }
+        
+        var light = 0;
+        function toggle() {
+            if (light % 2 == 1) {
+                document.getElementsByClassName("img")[0].style.backgroundColor = 'black';
+                document.getElementById("flute").style.opacity = 0.0;
+                document.getElementById("lightswitch").style.opacity = 0.05;
+            } else {
+                document.getElementsByClassName("img")[0].style.backgroundColor = 'white';
+                document.getElementById("flute").style = 'position: absolute; top: 10%; left: 20%; height:5vh';
+                document.getElementById("lightswitch").style.opacity = 1.0;
+                if (light == 0) {
+                    document.getElementById("my_audio").play();
+                }
+            }
+            light += 1;
+        }
+
+        var b = document.getElementsByName("b")[0];
+        var Bb = document.getElementsByName("Bb")[0];
+        var C = document.getElementsByName("C")[0];
+        var notes = [b, Bb, C]
+        var button = document.getElementById("btn");
+
+        function puzzle1() {
+            p1.style.display = "block";
+        }
+        function p1q() {
+            if(b.checked) {
+                document.getElementById("door").style.display = "block"
+            }
+        }
+    </script>
+
+</body>
+</html>
