@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Escape Room: Enor Edition</title>
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <style>
         * {box-sizing: border-box}
         body {font-family: Verdana, sans-serif; margin:0; height:100%}
         .mySlides {display: none}
-        rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.0}
 
         .slideshow-container {
             max-height: 100%;
@@ -17,22 +17,22 @@
         }
 
         .img1 {
-            background: url("pics/wall.png") no-repeat fixed 50%;
+            background: url("pics/room/wall.png") no-repeat fixed 50%;
             background-size: cover;
         }
 
         .img2 {
-            background: url("pics/wall.png") no-repeat fixed 50%;
+            background: url("pics/room/wall.png") no-repeat fixed 50%;
             background-size: cover;
         }
 
         .img3 {
-            background: url("pics/chem_lab.jpg") no-repeat fixed 50%;
+            background: url("pics/room/chem_lab.jpg") no-repeat fixed 50%;
             background-size: cover;
         }
 
         .img4 {
-            background: url("pics/wall.png") no-repeat fixed 50%;
+            background: url("pics/room/wall.png") no-repeat fixed 50%;
             background-size: cover;
         }
 
@@ -64,114 +64,6 @@
             background-color: rgba(0,0,0,0.8);
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            /* width: 80%; */
-        }
-
-        .modal-image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            height: 70vh;
-        }
-
-        .pocket-image {
-            margin: auto;
-            height: 40vh;
-        }
-
-        .p3img {
-            position: absolute;
-            height: 120px;
-            border-radius: 50%;
-        }
-
-        .puzzle4-image {
-            position: absolute;
-            height: 5%;
-        }
-        .p4mimg {
-            height:10vh; 
-            display:none;
-        }
-
-        .puzzle5-image {
-            width: 15vw;
-            position: absolute;
-        }
-
-        #puzzle7-image {
-            display: block;
-            margin-left:auto;
-            margin-right:auto;
-            height: 50vh;
-        }
-
-        #puzzle8-image {
-            display: block;
-            height: 480px;
-        }
-
-        .p9btn {
-            position: absolute;
-            bottom: 11%;
-            background-color: transparent;
-            border: none;
-            cursor: unset;
-        }
-        .p9modalimg {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50vw;
-        }
-
-        #sesame {
-            position: absolute; 
-            bottom: 9%; 
-            left: 5%; 
-            height:50%;
-            display:none;
-        }
-
-        .dot {
-            height: 8px;
-            width: 8px;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        /* PICTURE HERE */
-        #mf2, #mf3, #mf4, #mf5, #mf6, #mf7, #mf9 {
-            position: absolute;
-            height: 70px;
-            top: 200px; 
-            left: 1000px;
-            display:none;
-        }
-
-        td {
-            text-align:center;
-        }
-
         .fade {
             -webkit-animation-name: fade;
             -webkit-animation-duration: 1.5s;
@@ -199,20 +91,20 @@
             <div class="content"></div>
 
             <img src="pics/9/couch.png" style="position: absolute; bottom: 5%; right: 5%; height:50vh">
-            <div class="dot" style="bottom: 35%; right: 14%; background-color:#b9dded" onclick="click5()"></div>
+            <div class="dot" style="bottom: 35%; right: 14%; background-color:#b9dded" onclick="clck(5)"></div>
             <div id="p9_5" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" style="width:30vw" src="pics/9/qs/blue.png">
                 </div>
             </div> 
-            <div class="dot" style="bottom: 18%; right: 35%; background-color:#b99164" onclick="click9()"></div>
+            <div class="dot" style="bottom: 18%; right: 35%; background-color:#b99164" onclick="clck(9)"></div>
             <div id="p9_9" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/brown.png">
                 </div>
             </div> 
             <img src="pics/9/beaver.png" style="position: absolute; bottom: 27%; right: 25%; height:20%">
-            <div class="dot" style="bottom: 36%; right: 28%; background-color:#7f1a1f" onclick="click4()"></div>
+            <div class="dot" style="bottom: 36%; right: 28%; background-color:#7f1a1f" onclick="clck(4)"></div>
             <div id="p9_4" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/red.png">
@@ -221,26 +113,25 @@
 
             <img src="pics/3/1.jpg"  class="p3img" style="top: 10%; left: 16%;">
             <img src="pics/3/2.jpg"  class="p3img" style="top: 10%; left: 32%;">
-            <img id="e" src="pics/4/giraffe.png" class="puzzle4-image" style="top: 15%; left: 50%;" ondblclick="p4e()">
+            <img id="e" src="pics/4/giraffe.png" class="puzzle4-image" style="top: 15%; left: 50%;" ondblclick="p4sel('e')">
             <img src="pics/3/3.jpg"  class="p3img" style="top: 10%; left: 48%;">
             <img src="pics/3/4.jpg"  class="p3img" style="top: 10%; left: 64%;">
             <img src="pics/3/5.jpg"  class="p3img" style="top: 10%; left: 80%;">
-            <img id="s" src="pics/4/mic.png" class="puzzle4-image" style="top: 35%; left: 27%;" ondblclick="p4s()">
+            <img id="s" src="pics/4/mic.png" class="puzzle4-image" style="top: 35%; left: 27%;" ondblclick="p4sel('s')">
             <img src="pics/3/6.jpg"  class="p3img" style="top: 30%; left: 24%;">
             <img src="pics/3/31.jpg" class="p3img" style="top: 30%; left: 40%;">
             <img src="pics/3/8.jpg"  class="p3img" style="top: 30%; left: 56%;">
-            <img id="a" src="pics/4/tennis.png" class="puzzle4-image" style="top: 35%; left: 75%;" ondblclick="p4a()">
+            <img id="a" src="pics/4/tennis.png" class="puzzle4-image" style="top: 35%; left: 75%;" ondblclick="p4sel('a')">
             <img src="pics/3/10.jpg" class="p3img" style="top: 30%; left: 72%;">
             
             <img src="pics/5/briefcase.png" style="position:absolute; bottom:5%; right:50%; height:25%" onclick="puzzle5()">
             
-
-            <img src="pics/mfcollage.png" class="mfcollage" style="display: none;">
+            <img src="pics/8/mfcollage.png" class="mfcollage" style="display: none;">
             <!-- PICTURE HERE -->
-            <img src="pics/backpack.png" style="position:absolute; bottom:7%; left:16%; height:25%" onclick="p8()" >
+            <img src="pics/8/backpack.png" style="position:absolute; bottom:7%; left:18%; height:25%" onclick="p8()" >
             <div id="puzzle8" class="modal">
                 <div class="modal-content">
-                    <img src="pics/white.png" id="puzzle8-image" style="border: 2px solid black;">
+                    <img src="pics/8/white.png" id="puzzle8-image" style="border: 2px solid black;">
                     <img src="pics/8/1.png" id="mf2"></img>
                     <img src="pics/8/5.png" id="mf3"></img>
                     <img src="pics/8/2.png" id="mf4"></img>
@@ -251,24 +142,23 @@
                     <p onclick="p8check()"> check me out </p>
                 </div>
             </div>
-            <img src="pics/door.jpg" style="position: absolute; bottom: 13%; left: 5%; height:50%" id="door"/>
-            <a href="poster.html"><img src="pics/opendoor.png" id="sesame"/></a>
+            <img src="pics/room/door.jpg" style="position: absolute; bottom: 13%; left: 5%; height:50%" id="door"/>
+            <a href="poster.html"><img src="pics/room/opendoor.png" id="sesame"/></a>
         </div>
 
         <div class="mySlides fade img2">
             <div class="content"></div>
             
-            <!-- puzzle 7 -->
-            <img src="pics/hotpot.jpg" style="position: absolute; top: 48%; right: 40%; width:20%" onclick="p7()">
+            <img src="pics/7/hotpot.jpg" style="position: absolute; top: 45%; right: 40%; width:20%" onclick="p7()">
             <div id="puzzle7" class="modal">
                 <div class="modal-content">
-                    <img src="pics/pot.jpg" id="puzzle7-image">
-                    <img src="pics/meat1.jpg" id="p7meat" style="display:none;position:absolute; height:10%;top:35%;left:45%">
+                    <img src="pics/7/pot.jpg" id="puzzle7-image">
+                    <img src="pics/7/meat1.jpg" id="p7meat" style="display:none;position:absolute; height:10%;top:35%;left:45%">
                     <table style="margin-left:auto; margin-right:auto;">
                         <tr>
-                            <th><img src="pics/kimchi.jpg" style="height:20vh" onclick="kimchi()"></th>
-                            <th><img src="pics/meat.jpg" style="height:20vh" onclick="meat()"></th>
-                            <th><img src="pics/veg.jpg" style="height:20vh"></th>
+                            <th><img src="pics/7/kimchi.jpg" style="height:20vh" onclick="kimchi()"></th>
+                            <th><img src="pics/7/meat.jpg" style="height:20vh" onclick="meat()"></th>
+                            <th><img src="pics/7/veg.jpg" style="height:20vh"></th>
                         </tr>
                         <tr>
                             <!-- <th><p id="ordernumtest">0</p></th> -->
@@ -282,7 +172,7 @@
 
             <img src="pics/3/11.jpg" class="p3img" style="top: 10%; left: 18%;">
             <img src="pics/3/12.jpg" class="p3img" style="top: 35%; left: 18%;">
-            <img id="j" src="pics/4/speech.png" class="puzzle4-image" style="top: 12%; left: 8%;" ondblclick="p4j()">
+            <img id="j" src="pics/4/speech.png" class="puzzle4-image" style="top: 12%; left: 8%;" ondblclick="p4sel('j')">
             <img src="pics/3/13.jpg" class="p3img" style="top: 10%; left: 6%;">
             <img src="pics/3/14.jpg" class="p3img" style="top: 10%; left: 30%;">
             <img src="pics/3/15.jpg" class="p3img" style="top: 35%; left: 30%;">
@@ -290,7 +180,7 @@
             <img src="pics/3/17.jpg" class="p3img" style="top: 10%; right: 18%;">
             <img src="pics/3/18.jpg" class="p3img" style="top: 35%; right: 18%;">
             <img src="pics/3/19.jpg" class="p3img" style="top: 10%; right: 6%;">
-            <img id="h" src="pics/4/chef.png"    class="puzzle4-image" style="top: 12%; right: 32%;" ondblclick="p4h()">
+            <img id="h" src="pics/4/chef.png"    class="puzzle4-image" style="top: 12%; right: 32%;" ondblclick="p4sel('h')">
             <img src="pics/3/20.jpg" class="p3img" style="top: 10%; right: 30%;">
             <img src="pics/3/21.jpg" class="p3img" style="top: 35%; right: 30%;">
             <img src="pics/3/22.jpg" class="p3img" style="top: 35%; right: 6%;">
@@ -303,20 +193,19 @@
             </div>
 
             <img src="pics/9/rug.png" style="position: absolute; bottom: 2%; right: 25%; width: 50%; height:10%">
-            <div class="dot" style="bottom: 5%; right: 35%; background-color:#a5a49c" onclick="click8()"></div>
+            <div class="dot" style="bottom: 5%; right: 35%; background-color:#a5a49c" onclick="clck(8)"></div>
             <div id="p9_8" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/lightgrey.png">
                 </div>
             </div> 
 
-            <img src="pics/table2.png" style="position: absolute; bottom: 5%; right: 5%; width: 20%; height:40%">
+            <img src="pics/room/table2.png" style="position: absolute; bottom: 5%; right: 5%; width: 20%; height:40%">
             
-            <!-- puzzle 9 -->
-            <img src="pics/cdplayer.png" style="position: absolute; bottom: 10%; left: 5%; height:20%" onclick="p9()">
+            <img src="pics/9/cdplayer.png" style="position: absolute; bottom: 10%; left: 5%; height:20%" onclick="p9()">
             <button class="p9btn" style="left: 10%;" onclick="p9playpause()">&#x23EF</button>
             <button class="p9btn" style="left: 12%;" onclick="p9skip()">&#x23E9</button>
-            <button class="p9btn" style="left: 15%;" onclick="p9eject()">&#x23CF</button>
+            <button class="p9btn" style="left: 14%;" onclick="p9eject()">&#x23CF</button>
             <audio class="p9audio" id="t1"> <source src="audio/OurSong.mp3" type="audio/mpeg"> </audio>
             <audio class="p9audio" id="t2"> <source src="audio/YouBelongWithMe.mp3" type="audio/mpeg"> </audio>
             <audio class="p9audio" id="t4"> <source src="audio/ATWTMVTVFTV.mp3" type="audio/mpeg"> </audio>
@@ -327,15 +216,15 @@
             <audio class="p9audio" id="t9"> <source src="audio/champagneproblems.mp3" type="audio/mpeg"> </audio>
             <audio class="p9audio" id="t10"> <source src="audio/Karma.mp3" type="audio/mpeg"> </audio>
 
-            <img src="pics/mfcollage.png" class="mfcollage" style="display: none;">
+            <img src="pics/8/mfcollage.png" class="mfcollage" style="display: none;">
         </div>
 
         <div class="mySlides fade img3">
             <div class="content"></div>
-            <img src="pics/chem_table.png" style="position: absolute; top: 5%; right: 40%; height:25%" onclick="p2tablezoom()">
+            <img src="pics/2/chem_table.png" style="position: absolute; top: 5%; right: 40%; height:25%" onclick="p2tablezoom()">
             <div id="puzzle2table" class="modal">
                 <div class="modal-content">
-                    <img class="modal-image" src="pics/chem_table.png">
+                    <img class="modal-image" src="pics/2/chem_table.png">
                 </div>
             </div> 
             <div style="position: absolute; top: 48%; right: 7%">
@@ -396,32 +285,31 @@
                                 </tr>
                             </table>
                             <p style="text-align:center"><button onclick="bbon()">all done</button></p>
-                            <img id="p2explosion" src="pics/explosion.png" style="display:none;">
-                            <img id="p2good" src="pics/p2good.jpg" style="display:none;">
+                            <img id="p2explosion" src="pics/2/explosion.png" style="display:none;">
+                            <img id="p2good" src="pics/2/p2good.jpg" style="display:none;">
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="dot" style="bottom: 20%; right: 20%; background-color:#171515" onclick="click6()"></div>
+            <div class="dot" style="bottom: 20%; right: 20%; background-color:#171515" onclick="clck(6)"></div>
             <div id="p9_6" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/darkgrey.png">
                 </div>
             </div> 
-            <div class="dot" style="bottom: 20%; left: 20%; background-color:#49486a" onclick="click10()"></div>
+            <div class="dot" style="bottom: 20%; left: 20%; background-color:#49486a" onclick="clck(10)"></div>
             <div id="p9_10" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/darkblue.png">
                 </div>
             </div> 
-            <img src="pics/mfcollage.png" class="mfcollage" style="display: none;">
+            <img src="pics/8/mfcollage.png" class="mfcollage" style="display: none;">
         </div>
 
         <div class="mySlides fade img4">
             <div class="content"></div>
 
-            <!-- puzzle 4 -->
-            <img src="pics/calendar.png" style="position: absolute; top: 10%; left: 12%; height:20%" onclick="p4()">
+            <img src="pics/4/calendar.png" style="position: absolute; top: 10%; left: 12%; height:20%" onclick="p4()">
             <div id="puzzle4" class="modal">
                 <div class="modal-content">
                     <table style="margin-left:auto; margin-right:auto;"> 
@@ -448,7 +336,6 @@
                 </div>
             </div>
 
-            <!-- puzzle 5 -->            
             <img src="pics/5/postit.png" style="position: absolute; top: 50%; left: 15%; height:10%" onclick="p5note()">
             <div id="p5sticky" class="modal">
                 <div class="modal-content">
@@ -456,32 +343,32 @@
                 </div>
             </div>
                         
-            <img src="pics/fireplace.png" style="position: absolute; bottom: 10%; right: 10%; height:40vh">
-            <div class="dot" style="bottom: 22%; right: 20%; background-color:#fdd87d" onclick="click2()"></div>
+            <img src="pics/room/fireplace.png" style="position: absolute; bottom: 10%; right: 10%; height:40vh">
+            <div class="dot" style="bottom: 22%; right: 20%; background-color:#fdd87d" onclick="clck(2)"></div>
             <div id="p9_2" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/gold.png">
                 </div>
             </div> 
             <img src="pics/9/succ.png" style="position: absolute; bottom: 49%; right: 20%; height:20%">
-            <div class="dot" style="bottom: 60%; right: 23%; background-color:#8ccab9" onclick="click1()"></div>
+            <div class="dot" style="bottom: 60%; right: 23%; background-color:#8ccab9" onclick="clck(1)"></div>
             <div id="p9_1" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/green.png">
                 </div>
             </div> 
 
-            <img src="pics/table.png" style="position: absolute; bottom: 0%; left: 5%; height:30vh">
-            <img src="pics/phone.png" style="position: absolute; bottom: 21%; left: 20%; height:6%" onclick="p6()">
+            <img src="pics/room/table.png" style="position: absolute; bottom: 0%; left: 5%; height:30vh">
+            <img src="pics/6/phone.png" style="position: absolute; bottom: 21%; left: 20%; height:6%" onclick="p6()">
             <img src="pics/9/flower.png" style="position: absolute; bottom: 21%; left: 27%; height:25%">
-            <div class="dot" style="bottom: 35%; left: 33%; background-color:#a485cd" onclick="click3()"></div>
+            <div class="dot" style="bottom: 35%; left: 33%; background-color:#a485cd" onclick="clck(3)"></div>
             <div id="p9_3" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/purple.png">
                 </div>
             </div> 
             <img src="pics/9/strawb.png" style="position: absolute; bottom: 23%; left: 15%; height:10%">
-            <div class="dot" style="bottom: 24%; left: 17%; background-color:#e77494" onclick="click7()"></div>
+            <div class="dot" style="bottom: 24%; left: 17%; background-color:#e77494" onclick="clck(7)"></div>
             <div id="p9_7" class="modal">
                 <div class="modal-content">
                     <img class="p9modalimg" src="pics/9/qs/pink.png">
@@ -489,7 +376,7 @@
             </div> 
             <div id="puzzle6" class="modal">
                 <div class="modal-content">
-                    <img class="modal-image" src="pics/wordle.jpg">
+                    <img class="modal-image" src="pics/6/wordle.jpg">
                     <form id="form" onsubmit="return false;" style="position:absolute;top:55%;left:42.5%">
                         <input type="text" size="1" tabindex="1" maxlength="1" onkeyup="tab(this,this.value)" id="w1"/>
                         <input type="text" size="1" tabindex="2" maxlength="1" onkeyup="tab(this,this.value)" id="w2"/>
@@ -499,19 +386,19 @@
                     </form>
                 </div>
             </div>
-            <img id="rifle" src="pics/rifle.png" style="position: absolute; bottom: 2%; left: 20%; height:12%;" ondblclick="p3()">
+            <img id="rifle" src="pics/3/rifle.png" style="position: absolute; bottom: 2%; left: 20%; height:12%;" ondblclick="p3()">
                 
             <img src="pics/3/23.jpg"  class="p3img" style="top: 10%; left: 30%;">
             <img src="pics/3/25.jpg"  class="p3img" style="top: 10%; left: 48%;">
             <img src="pics/3/26.jpg"  class="p3img" style="top: 10%; left: 66%;">
-            <img id="d" src="pics/4/slap.png" class="puzzle4-image" style="top: 12%; left: 84%;" ondblclick="p4d()">
+            <img id="d" src="pics/4/slap.png" class="puzzle4-image" style="top: 12%; left: 84%;" ondblclick="p4sel('d')">
             <img src="pics/3/27.jpg"  class="p3img" style="top: 10%; left: 82%;">
             <img src="pics/3/28.jpg"  class="p3img" style="top: 36%; left: 39%;">
             <img src="pics/3/29.jpg"  class="p3img" style="top: 36%; left: 57%;" id="flip">
-            <img id="n" src="pics/4/choc.png" class="puzzle4-image" style="top: 64%; left: 50%;" ondblclick="p4n()">
+            <img id="n" src="pics/4/choc.png" class="puzzle4-image" style="top: 64%; left: 50%;" ondblclick="p4sel('n')">
             <img src="pics/3/30.jpg"  class="p3img" style="top: 62%; left: 48%;">
 
-            <img src="pics/mfcollage.png" class="mfcollage" style="display: none;">
+            <img src="pics/8/mfcollage.png" class="mfcollage" style="display: none;">
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -519,710 +406,7 @@
 
     </div>
 
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex-1].style.display = "block";
-        }
-
-        // modals
-        var puzzle2 = document.getElementById("puzzle2");
-        var p2table = document.getElementById("puzzle2table");
-        var p2text = document.getElementById("puzzle2text");
-        var p2explosion = document.getElementById("p2explosion");
-        // var puzzle3 = document.getElementById("puzzle3");
-        var puzzle4 = document.getElementById("puzzle4");
-        var p5map = document.getElementById("p5map");
-        var p5sticky = document.getElementById("p5sticky");
-        var puzzle6 = document.getElementById("puzzle6");
-        var puzzle7 = document.getElementById("puzzle7");
-        var puzzle8 = document.getElementById("puzzle8");
-        // var puzzle9 = document.getElementById("puzzle9");
-        var p9_1 = document.getElementById("p9_1");
-        var p9_2 = document.getElementById("p9_2");
-        var p9_3 = document.getElementById("p9_3");
-        var p9_4 = document.getElementById("p9_4");
-        var p9_5 = document.getElementById("p9_5");
-        var p9_6 = document.getElementById("p9_6");
-        var p9_7 = document.getElementById("p9_7");
-        var p9_8 = document.getElementById("p9_8");
-        var p9_9 = document.getElementById("p9_9");
-        var p9_10 = document.getElementById("p9_10");
-
-        var p2correct = false;
-        var p3correct = false;
-        var p4correct = false;
-        var p5correct = false;
-        var p6correct = false;
-        var p7correct = false;
-        var p8correct = false;
-        var p9correct = false;
-        
-        // puzzle 3
-        var rifle_active = false;
-        var rifle_found = false;
-        document.onkeypress = key_alert;
-        function key_alert(e) {
-            if (`${e.code}` == "KeyS") {
-                if (rifle_found) {
-                    if (rifle_active) {
-                        document.getElementById("rifle").style.display = "block";
-                        document.body.style.cursor="default";
-                        rifle_active = false;
-                    } else {
-                        document.getElementById("rifle").style.display = "none";
-                        document.body.style.cursor="crosshair";
-                        // enable shooting and disable all other clicks
-                        rifle_active = true;
-                    }
-                }
-            }
-        }
-        function p3() {
-            rifle_found = true;
-            alert("Careful -- the 's'afety's off!");
-        }
-
-        var Hcount = 0;
-        var Ocount = 0;
-        var Ccount = 0;
-        var Ncount = 0;
-        var Scount = 0;
-        function p2() {
-            if (!rifle_active) {
-                puzzle2.style.display = "block";
-            }
-        }
-        function p2tablezoom() {
-            if (!rifle_active) {
-                p2table.style.display = "block";
-            }
-        }
-        function p2showtext() {
-            if (!rifle_active) {
-                p2text.style.display = "block";
-            }
-        }
-        function addH() {
-            Hcount += 1;
-            document.getElementById("Hcount").innerHTML = Hcount;
-        }
-        function addO() {
-            Ocount += 1;
-            document.getElementById("Ocount").innerHTML = Ocount;
-        }
-        function addC() {
-            Ccount += 1;
-            document.getElementById("Ccount").innerHTML = Ccount;
-        }
-        function addN() {
-            Ncount += 1;
-            document.getElementById("Ncount").innerHTML = Ncount;
-        }
-        function addS() {
-            Scount += 1;
-            document.getElementById("Scount").innerHTML = Scount;
-        }
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-        var p2done_clicked = false;
-        function bbon(){
-            if (p2correct) {
-                alert("You can move on from this.")
-                return
-            }
-            p2done_clicked = true;
-            if (Hcount == 5 && Ocount == 6 && Ccount == 7 && Ncount == 5 && Scount == 0) {
-                p2correct = true;
-                document.getElementById("p2good").style = "position: absolute; top: 50%; left: 50%; height:100%; transform: translate(-50%, -50%);";
-                // sleep(3000).then(() => { document.getElementById("p2good").style = "display:none" });
-                alert("(Mr. Walz would be disappointed you didn't wear goggles, but…) The experiment was a success! Somehow that combination of elements created something you might be able to use to get out. You placed it in your bag.");
-                changebkgnd();
-            }
-            else {
-                document.getElementById("p2explosion").style = "position: absolute; top: 50%; left: 50%; height:100%; transform: translate(-50%, -50%);";
-                // sleep(3000).then(() => { document.getElementById("p2explosion").style = "display:none" });
-                Hcount = 0;
-                Ocount = 0;
-                Ccount = 0;
-                Ncount = 0;
-                Scount = 0;
-                document.getElementById("Hcount").innerHTML = Hcount;
-                document.getElementById("Ocount").innerHTML = Ocount;
-                document.getElementById("Ccount").innerHTML = Ccount;
-                document.getElementById("Ncount").innerHTML = Ncount;
-                document.getElementById("Scount").innerHTML = Scount;
-            }
-        }
-
-        var all = document.querySelectorAll(".p3img");
-        for (let i = 0; i < all.length; i++) {
-            all[i].addEventListener('click',function testfunction(e){
-                if (rifle_active){
-                    if (e.target.id == "flip") {
-                        if (p3correct) {
-                            alert("You can move on from this.")
-                            return
-                        }
-                        alert("Oh yeah... that's the one.")
-                        alert("A part of this picture chipped off and fell into your bag.")
-                        p3correct = true;
-                        changebkgnd()
-                    } else {
-                        e.target.style.display = "none"
-                    }
-                }
-            });
-        }
-
-        // TODO: pass argument into function to make it cleaner
-        function p4e() {
-            document.getElementById("e").style.display = "none";
-            document.getElementById("e4").style.display = "block";
-            document.getElementById("e4rank").innerHTML = '<select name="eselect" id="eselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4s() {
-            document.getElementById("s").style.display = "none";
-            document.getElementById("s4").style.display = "block";
-            document.getElementById("s4rank").innerHTML = '<select name="sselect" id="sselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4a() {
-            document.getElementById("a").style.display = "none";
-            document.getElementById("a4").style.display = "block";
-            document.getElementById("a4rank").innerHTML = '<select name="aselect" id="aselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4j() {
-            document.getElementById("j").style.display = "none";
-            document.getElementById("j4").style.display = "block";
-            document.getElementById("j4rank").innerHTML = '<select name="jselect" id="jselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4h() {
-            document.getElementById("h").style.display = "none";
-            document.getElementById("h4").style.display = "block";
-            document.getElementById("h4rank").innerHTML = '<select name="hselect" id="hselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4d() {
-            document.getElementById("d").style.display = "none";
-            document.getElementById("d4").style.display = "block";
-            document.getElementById("d4rank").innerHTML = '<select name="dselect" id="dselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4n() {
-            document.getElementById("n").style.display = "none";
-            document.getElementById("n4").style.display = "block";
-            document.getElementById("n4rank").innerHTML = '<select name="nselect" id="nselect">\
-                                                                <option value="b"> </option>\
-                                                                <option value="1">1</option>\
-                                                                <option value="2">2</option>\
-                                                                <option value="3">3</option>\
-                                                                <option value="4">4</option>\
-                                                                <option value="5">5</option>\
-                                                                <option value="6">6</option>\
-                                                                <option value="7">7</option>\
-                                                            </select>'
-        }
-        function p4() {
-            if (!rifle_active) {
-                puzzle4.style.display = "block";
-            }
-        }
-        var p4ans = {
-            'A': "3",
-            'D': "6",
-            'E': "1",
-            'H': "4",
-            'J': "5",
-            'N': "7",
-            'S': "2"
-        };
-        var friendct = 7;
-        function puzzle4check() {
-            if (p4correct) {
-                alert("You can move on from this.")
-                return
-            }
-            var count = 0
-            var foundcount = 0
-            var a = document.getElementById("aselect")
-            if (a != null) foundcount++;
-            var d = document.getElementById("dselect")
-            if (d != null) foundcount++;
-            var e = document.getElementById("eselect")
-            if (e != null) foundcount++;
-            var h = document.getElementById("hselect")
-            if (h != null) foundcount++;
-            var j = document.getElementById("jselect")
-            if (j != null) foundcount++;
-            var n = document.getElementById("nselect")
-            if (n != null) foundcount++;
-            var s = document.getElementById("sselect")
-            if (s != null) foundcount++;
-            if (foundcount != friendct) {
-                alert("Gotta collect them all...")
-                return
-            }            
-            if(a.value == p4ans['A']) { count++; }
-            if(d.value == p4ans['D']) { count++; }
-            if(e.value == p4ans['E']) { count++; }
-            if(h.value == p4ans['H']) { count++; }
-            if(j.value == p4ans['J']) { count++; }
-            if(n.value == p4ans['N']) { count++; }
-            if(s.value == p4ans['S']) { count++; }
-            if (count == friendct) {
-                p4correct = true;
-                alert("Your friendship proves true and you win a prize. You put it in your bag.");
-                changebkgnd();
-            } else {
-                alert("You should know your friends better than that...");
-            }
-        }
-
-        function p5world() {
-            if (!rifle_active) {
-                p5map.style.display = "block";
-            }
-        }
-        function p5note() {
-            if (!rifle_active) {
-                p5sticky.style.display = "block";
-            }
-        }
-        function puzzle5() {
-            if (p5correct) {
-                alert("You can move on from this.")
-                return
-            }
-            if (!rifle_active) {
-                var p5ans = prompt("The briefcase is locked. The lock combination is made up of letters. You see a luggage tag that says “You have traveled all over the world - what is your most prized possession?");
-                if (p5ans.toLowerCase() == "peanut") {
-                    p5correct = true;
-                    alert("The briefcase opened, and you put its contents inside of your bag.");
-                    changebkgnd();
-                } else {
-                    alert("That's not it.");
-                }
-            }
-        }
-
-        function p6() {
-            if (p6correct) {
-                alert("You can move on from this.")
-                return
-            }
-            if (!rifle_active) {
-                puzzle6.style.display = "block";
-            }
-        }
-        function tab(elmnt,content){
-            if (content.length==elmnt.maxLength){
-                next=elmnt.tabIndex
-                if (next<document.forms[0].elements.length){
-                    document.forms[0].elements[next].focus()
-                }
-            }
-        }
-        w5.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                puzzle6q();
-            }
-        });
-        function puzzle6q(){
-            if (p6correct) {
-                alert("You can move on from this.")
-                return
-            }
-            var c1 = w1.value.toLowerCase() == 'e'
-            var c2 = w2.value.toLowerCase() == 'n'
-            var c3 = w3.value.toLowerCase() == 'a'
-            var c4 = w4.value.toLowerCase() == 'u'
-            var c5 = w5.value.toLowerCase() == 'r'
-            if (c1 && c2 && c3 && c4 && c5) {
-                p6correct = true;
-                alert("You solved the wordle correctly, but you realize that you only needed this phone because there was something hidden in the case. You put it in your bag.");
-                changebkgnd();
-            } else {
-                alert("Wordle 114 X/6");
-                form.reset();
-            }
-        }
-
-        var meat_count = 0;
-        var need_order = true;
-        function p7() {
-            if (!rifle_active) {
-                puzzle7.style.display = "block";
-            }
-        }
-        function kimchi() {
-            meat_count = 0;
-            document.getElementById("order").style.display = "block";
-            document.getElementById("p7meat").style.display = "none";
-            need_order = true;
-            // document.getElementById("ordernumtest").innerHTML = meat_count;
-        }
-        function meat() {
-            if (!need_order) {
-                meat_count += 1;
-                document.getElementById("p7meat").style.display = "block";
-            } 
-            // document.getElementById("ordernumtest").innerHTML = meat_count;
-            need_order = meat_count % 12 == 0
-            if (need_order) {
-                document.getElementById("order").style.display = "block";
-                need_order = true;
-            }
-            if (meat_count == 60 && !p7correct) {
-                alert("You won a prize and you put it into your bag.");
-                p7correct = true;
-                changebkgnd();
-            }
-            if (meat_count > 60) {
-                alert("You could've (should've) stopped at 60... now you feel some of the meat you just ate about to come back up.")
-            }
-        }
-        function order() {
-            need_order = false;
-            document.getElementById("order").style.display = "none";
-        }
-
-        function p8() {
-            if (!rifle_active) {
-                if (p2correct) { mf2.style.display = "block" }
-                if (p3correct) { mf3.style.display = "block" }
-                if (p4correct) { mf4.style.display = "block" }
-                if (p5correct) { mf5.style.display = "block" }
-                if (p6correct) { mf6.style.display = "block" }
-                if (p7correct) { mf7.style.display = "block" }
-                if (p9correct) { mf9.style.display = "block" }
-                puzzle8.style.display = "block"
-            }
-        }
-        
-        // PICTURE HERE
-
-        // puzzle starts at (20, 120) and is 368 x 490 px tall
-        // each piece is 70 px tall
-        // order: 2 4 6 9 3 7 5
-
-        var margin = 10;
-        var l = 20;
-        var t = 120;
-
-        function p8check() {
-            mf2_correct = Math.abs(mf2.offsetLeft - l) < margin && Math.abs(mf2.offsetTop - 0 - t) < margin;
-            mf3_correct = Math.abs(mf3.offsetLeft - l) < margin && Math.abs(mf3.offsetTop - 280 - t) < margin;
-            mf4_correct = Math.abs(mf4.offsetLeft - l) < margin && Math.abs(mf4.offsetTop - 70 - t) < margin;
-            mf5_correct = Math.abs(mf5.offsetLeft - l) < margin && Math.abs(mf5.offsetTop - 420 - t) < margin;
-            mf6_correct = Math.abs(mf6.offsetLeft - l) < margin && Math.abs(mf6.offsetTop - 140 - t) < margin;
-            mf7_correct = Math.abs(mf7.offsetLeft - l) < margin && Math.abs(mf7.offsetTop - 350 - t) < margin;
-            mf9_correct = Math.abs(mf9.offsetLeft - l) < margin && Math.abs(mf9.offsetTop - 210 - t) < margin;
-
-            if (mf2_correct && mf3_correct && mf4_correct && mf5_correct && mf6_correct && mf7_correct && mf9_correct) {
-                p8correct = true;
-                document.getElementById("sesame").style.display = "block"
-                document.getElementById("door").style.display = "none"
-                alert("You hear the lock click in the door, and you jiggle the handle. It opens!")
-            } 
-            else alert("You can do better than that.");
-        }
-
-        var t1 = document.getElementById("t1");
-        var t2 = document.getElementById("t2");
-        var t4 = document.getElementById("t4");
-        var t5 = document.getElementById("t5");
-        var t6 = document.getElementById("t6");
-        var t7 = document.getElementById("t7");
-        var t8 = document.getElementById("t8");
-        var t9 = document.getElementById("t9");
-        var t10 = document.getElementById("t10");
-        var index = 0;
-        var playlist = [t4, t7, t8, t1, t9, t6, t2, t10, t5];
-        var allplayed = false;
-        function p9playpause() {
-            if (!rifle_active) {
-                if (!p9correct) {
-                    if (playlist[index].paused) { playlist[index].play(); }
-                    else { playlist[index].pause(); }
-                }
-            }
-        }
-        function p9skip() {
-            if (!rifle_active) {
-                playlist[index].pause();
-                playlist[index].currentTime = 0;
-                index = (index + 1) % playlist.length;
-                if (index == playlist.length-1) { allplayed = true; }
-                playlist[index].play();
-            }
-        }
-        function p9eject() {
-            if (p9correct) {
-                alert("You can move on from this.")
-                return
-            }
-            if (!rifle_active) {
-                if (allplayed) {
-                    var p9ans = prompt("Something's missing...");
-                    if (p9ans == "16") {
-                        p9correct = true;
-                        alert("The music stops, and out comes something you put into your bag.");
-                        playlist[index].pause();
-                        changebkgnd();
-                    } else {
-                        alert("This button isn't working.")
-                    }
-                }
-            }
-        }
-        var p9aud = document.querySelectorAll(".p9audio");
-        for (let i = 0; i < p9aud.length; i++) {
-            p9aud[i].addEventListener('ended',function fn(){
-                index = (index + 1) % playlist.length;
-                if (index == playlist.length-1) { allplayed = true; }
-                playlist[index].play();
-            });
-        }
-        function click1(){
-            if (!rifle_active) {
-                p9_1.style.display = "block"
-            }
-        }
-        function click2(){
-            if (!rifle_active) {
-                p9_2.style.display = "block"
-            }
-        }
-        function click3(){
-            if (!rifle_active) {
-                p9_3.style.display = "block"
-            }
-        }
-        function click4(){
-            if (!rifle_active) {
-                p9_4.style.display = "block"
-            }
-        }
-        function click5(){
-            if (!rifle_active) {
-                p9_5.style.display = "block"
-            }
-        }
-        function click6(){
-            if (!rifle_active) {
-                p9_6.style.display = "block"
-            }
-        }
-        function click7(){
-            if (!rifle_active) {
-                p9_7.style.display = "block"
-            }
-        }
-        function click8(){
-            if (!rifle_active) {
-                p9_8.style.display = "block"
-            }
-        }
-        function click9(){
-            if (!rifle_active) {
-                p9_9.style.display = "block"
-            }
-        }
-        function click10(){
-            if (!rifle_active) {
-                p9_10.style.display = "block"
-            }
-        }
-
-        function changebkgnd() {
-            if (p2correct && p3correct && p4correct && p5correct && p6correct && p7correct && p9correct) {
-                const pics = document.querySelectorAll('.mfcollage');
-                pics.forEach(pic => {
-                    pic.style = "position:absolute;top:0px;left:0px;height:100%;width:100%;object-fit:cover";
-                });
-            }
-        }
-
-        // PICTURE HERE
-
-        // Make the element draggable:
-        dragElement(document.getElementById("mf2"));
-        dragElement(document.getElementById("mf3"));
-        dragElement(document.getElementById("mf4"));
-        dragElement(document.getElementById("mf5"));
-        dragElement(document.getElementById("mf6"));
-        dragElement(document.getElementById("mf7"));
-        dragElement(document.getElementById("mf9"));
-
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            elmnt.onmousedown = dragMouseDown;
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                /* stop moving when mouse button is released:*/
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-
-        function allowDrop(ev) {
-            ev.preventDefault();
-        }
-
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
-
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
-
-        var modals = [puzzle2, p2table, p2text, puzzle4, p5map, p5sticky, puzzle6, puzzle7, puzzle8, p2explosion, p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10];
-        window.onclick = function(event) {
-            if (modals.includes(event.target)) {
-                puzzle2.style.display = "none";
-                p2table.style.display = "none";
-                p2text.style.display = "none";
-                // puzzle3.style.display = "none";
-                puzzle4.style.display = "none";
-                p5map.style.display = "none";
-                p5sticky.style.display = "none";
-                puzzle6.style.display = "none";
-                puzzle7.style.display = "none";
-                puzzle8.style.display = "none";
-                p9_1.style.display = "none";
-                p9_2.style.display = "none";
-                p9_3.style.display = "none";
-                p9_4.style.display = "none";
-                p9_5.style.display = "none";
-                p9_6.style.display = "none";
-                p9_7.style.display = "none";
-                p9_8.style.display = "none";
-                p9_9.style.display = "none";
-                p9_10.style.display = "none";
-                p2explosion.style.display = "none";
-            }
-            if (event.target.id == "puzzle2") {
-                if (!p2done_clicked && !p2correct) {
-                    alert('Walz yelled at you for turning your back on an open flame. He forced you to discard your solution and to turn off the Bunsen burner.')
-                    Hcount = 0;
-                    Ocount = 0;
-                    Ccount = 0;
-                    Ncount = 0;
-                    Scount = 0;
-                    document.getElementById("Hcount").innerHTML = Hcount;
-                    document.getElementById("Ocount").innerHTML = Ocount;
-                    document.getElementById("Ccount").innerHTML = Ccount;
-                    document.getElementById("Ncount").innerHTML = Ncount;
-                    document.getElementById("Scount").innerHTML = Scount;
-                }
-                p2done_clicked = false
-            }
-        }
-
-        document.oncontextmenu = rightclick;
-        function rightclick(e){
-            e.preventDefault();
-        }
-
-    </script>
+    <script type="text/javascript" src="script.js"> </script>
 
 </body>
 </html>

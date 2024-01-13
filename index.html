@@ -57,13 +57,13 @@
         }
 
         #hole {
-            height: 10vh;
+            height: 8vh;
             width: 50vw;
             border-radius: 50%;
             position: absolute;
             left: 25%;
-            bottom: 5%;
-            background-color: gray;
+            bottom: 2%;
+            background-color: black;
             display: none;
         }
 
@@ -88,7 +88,34 @@
             </div>
         </div>
 
-        <img id="flute" src="pics/flute.png" style="display:none;" onclick="puzzle1()"/></img>
+        <div style="position: absolute; top: 40%; right: 5%">
+            <img src="pics/music/switch.jpg" onclick="toggle()" id="lightswitch" style="opacity: 0.05; height:10vh">
+        </div>
+
+        <div style="position: absolute; top: 80%; right: 12%">
+            <a id="door" style="cursor:default; display:none" href="walls.html">
+                <svg width="5vw" height="12vh"><rect width="100%" height="100%"/></svg>
+            </a>
+        </div>
+
+        <img style="display:none" src="pics/music/fingeringchart.jpg" id="chart" onclick="dominoes()">
+        <div id="dom" class="modal" style="display:none">
+            <div class="modal-content">
+                <img src="pics/music/puzzle.png" class="modal-image" style="width:60vw">
+            </div>
+        </div>
+
+        <!-- <img src="pics/music/violin.png" id="violin"> -->
+        <img style="display: none;" src="pics/music/fingeringchartc.jpg" id="cellochart">
+        <img style="display: none;" src="pics/music/keyboardchart.jpg" id="pianochart">
+        <img style="display: none;" src="pics/music/stand.png" id="flutestand">
+        <img style="display: none;" src="pics/music/stand.png" id="cellostand">
+        <img style="display: none;" src="pics/music/cdl.jpg" id="flutemusic">
+        <img style="display: none;" src="pics/music/cdl.jpg" id="cellomusic">
+        <img style="display: none;" src="pics/music/cello.png" id="cello">
+        <img style="display: none;" src="pics/music/piano.png" id="piano">
+        
+        <img id="flute" src="pics/music/flute.png" style="display:none;" onclick="puzzle1()"/></img>
         <div id="puzzle1" class="modal">
             <div class="modal-content">
                 <img src="pics/music/flutekeys.jpg" class="modal-image">
@@ -137,30 +164,6 @@
                 </table>
             </div>
         </div>
-
-        <div style="position: absolute; top: 20%; right: 12%">
-            <img src="pics/switch.jpg" onclick="toggle()" id="lightswitch" style="opacity: 0.05; height:10vh">
-        </div>
-
-        <div style="position: absolute; top: 80%; right: 12%">
-            <a id="door" style="cursor:default; display:none" href="walls.html">
-                <svg width="5vw" height="12vh"><rect width="100%" height="100%"/></svg>
-            </a>
-        </div>
-
-        <img src="pics/music/fingeringchart.jpg" id="chart" onclick="dominoes()">
-        <div id="dom" class="modal" style="display:none">
-            <div class="modal-content">
-                <img src="pics/music/puzzle.png" class="modal-image" style="width:60vw">
-            </div>
-        </div>
-
-        <!-- <img src="pics/music/domino7.gif" style="position:absolute; top:10%; left: 10%; height: 15%">
-        <img src="pics/music/domino65.gif" style="position:absolute; top:30%; left: 10%; height: 15%">
-        <img src="pics/music/domino43.gif" style="position:absolute; top:50%; left: 10%; height: 15%">
-        <img src="pics/music/domino42.gif" style="position:absolute; top:70%; left: 10%; height: 15%"> -->
-        <!-- Major, minor, half diminished, diminished, augmented, dominant -->
-
         <a href="walls.html"> <div id="hole" onclick="click5()"></div> </a>
     </div>
 
@@ -180,15 +183,40 @@
         var light = 0;
         function toggle() {
             if (light % 2 == 1) {
+                document.getElementsByClassName("img")[0].style.backgroundImage = '';
                 document.getElementsByClassName("img")[0].style.backgroundColor = 'black';
-                document.getElementById("flute").style.opacity = 0.0;
                 document.getElementById("lightswitch").style.opacity = 0.05;
+
+                document.getElementById("flute").style.opacity = 0.0;
+                // document.getElementById("violin").style.opacity = 0.0;
+                document.getElementById("cello").style.opacity = 0.0;
+                document.getElementById("piano").style.opacity = 0.0;
+                
                 document.getElementById("chart").style.opacity = 0.0;
+                document.getElementById("cellochart").style.opacity = 0.0;
+                document.getElementById("pianochart").style.opacity = 0.0;
+
+                document.getElementById("cellostand").style.opacity = 0.0;
+                document.getElementById("flutestand").style.opacity = 0.0;
+                document.getElementById("cellomusic").style.opacity = 0.0;
+                document.getElementById("flutemusic").style.opacity = 0.0;
             } else {
-                document.getElementsByClassName("img")[0].style.backgroundColor = 'white';
-                document.getElementById("flute").style = 'position: absolute; bottom: 10%; left: 8%; height:5vh';
+                document.getElementsByClassName("img")[0].style.backgroundImage = 'url("pics/music/wall.png")';
                 document.getElementById("lightswitch").style.opacity = 1.0;
-                document.getElementById("chart").style = "position:absolute; top:20%; left: 10%; height: 60%";
+                
+                document.getElementById("flute").style = 'position: absolute; bottom: 5%; left: 10%; width:20vw';
+                // document.getElementById("violin").style = "position:absolute; bottom:5%; left: 40%; width: 13%";
+                document.getElementById("cello").style = "position:absolute; bottom:5%; left: 49%; width: 18%";
+                document.getElementById("piano").style = "position:absolute; bottom:5%; left: 72%; width: 25%";
+
+                document.getElementById("chart").style = "position:absolute; top:10%; left: 5%; height: 60%";
+                document.getElementById("cellochart").style = "position:absolute; top:10%; left: 40%; height: 50%";
+                document.getElementById("pianochart").style = "position:absolute; top:10%; left: 72%; width: 25%";
+
+                document.getElementById("flutestand").style = "position:absolute; bottom:5%; left: 20%; height: 50%";
+                document.getElementById("cellostand").style = "position:absolute; bottom:5%; left: 53%; height: 50%";
+                document.getElementById("flutemusic").style = "position:absolute; bottom:45%; left: 30%; height: 15%";
+                document.getElementById("cellomusic").style = "position:absolute; bottom:45%; left: 63%; height: 15%";
                 if (light == 0) {
                     document.getElementById("my_audio").play();
                 }
@@ -225,13 +253,23 @@
             var count = 0;
             for (let i = 0; i < ans.length; i++) {
                 if (notes[i].checked != ans[i]) {
-                    alert("You sound like you need practice.");
+                    alert("It sounds like you need practice.");
                     return
                 }
             }
             p1correct = true;
-            alert("a gaping hole appears under your feet.");
+            alert("Your practice pays off. The pure tone you play is the exact resonant frequency of this room, and a large, gaping hole appears in the middle of the room.");
             document.getElementById("hole").style.display = "block";
+
+            document.getElementById("flute").style.display = "none";
+            // document.getElementById("violin").style.display = "none";
+            document.getElementById("cello").style.display = "none";
+            document.getElementById("piano").style.display = "none";
+
+            document.getElementById("cellostand").style.display = "none";
+            document.getElementById("flutestand").style.display = "none";
+            document.getElementById("cellomusic").style.display = "none";
+            document.getElementById("flutemusic").style.display = "none";
         }
         function dominoes() {
             dom.style.display = "block";

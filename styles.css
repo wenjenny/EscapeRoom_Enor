@@ -1,0 +1,109 @@
+rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.0}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    /* width: 80%; */
+}
+
+.modal-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70vh;
+}
+
+.pocket-image {
+    margin: auto;
+    height: 40vh;
+}
+
+.p3img {
+    position: absolute;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.puzzle4-image {
+    position: absolute;
+    height: 5%;
+}
+.p4mimg {
+    height:10vh; 
+    display:none;
+}
+
+.puzzle5-image {
+    width: 15vw;
+    position: absolute;
+}
+
+#puzzle7-image {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    height: 50vh;
+}
+
+#puzzle8-image {
+    display: block;
+    height: 480px;
+}
+
+.p9btn {
+    position: absolute;
+    bottom: 11%;
+    background-color: transparent;
+    border: none;
+    cursor: unset;
+}
+.p9modalimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+}
+
+#sesame {
+    position: absolute; 
+    bottom: 9%; 
+    left: 5%; 
+    height:50%;
+    display:none;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* PICTURE HERE */
+#mf2, #mf3, #mf4, #mf5, #mf6, #mf7, #mf9 {
+    position: absolute;
+    height: 70px;
+    top: 200px; 
+    left: 1000px;
+    display:none;
+}
+
+td {
+    text-align:center;
+}
