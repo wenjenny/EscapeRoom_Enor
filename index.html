@@ -74,7 +74,7 @@
     </style>
 </head>
 <body>
-    <audio id="my_audio" src="Angel.mp3" loop="loop"></audio>
+    <audio id="my_audio" src="audio/chord.m4a" loop="loop"></audio>
     <div class="img">
         <div class="content"></div>
         <div id="story" class="modal" style="display:block">
@@ -94,8 +94,8 @@
                 <img src="pics/music/flutekeys.jpg" class="modal-image">
                 <table>
                     <tr>
-                        <td> <input type = "checkbox" name = "Lb"> </td>
                         <td> <input type = "checkbox" name = "LBb"> </td>
+                        <td> <input type = "checkbox" name = "LB"> </td>
                         <td> <input type = "checkbox" name = "L1"> </td>
                         <td> <input type = "checkbox" name = "L2"> </td>
                         <td> <input type = "checkbox" name = "L3"> </td>
@@ -148,7 +148,18 @@
             </a>
         </div>
 
-        <img src="pics/music/fingeringchart.jpg" style="position:absolute; top:10%; left: 10%; height: 80%">
+        <img src="pics/music/fingeringchart.jpg" id="chart" onclick="dominoes()">
+        <div id="dom" class="modal" style="display:none">
+            <div class="modal-content">
+                <img src="pics/music/puzzle.png" class="modal-image" style="width:60vw">
+            </div>
+        </div>
+
+        <!-- <img src="pics/music/domino7.gif" style="position:absolute; top:10%; left: 10%; height: 15%">
+        <img src="pics/music/domino65.gif" style="position:absolute; top:30%; left: 10%; height: 15%">
+        <img src="pics/music/domino43.gif" style="position:absolute; top:50%; left: 10%; height: 15%">
+        <img src="pics/music/domino42.gif" style="position:absolute; top:70%; left: 10%; height: 15%"> -->
+        <!-- Major, minor, half diminished, diminished, augmented, dominant -->
 
         <a href="walls.html"> <div id="hole" onclick="click5()"></div> </a>
     </div>
@@ -156,11 +167,13 @@
     <script>
         var p1 = document.getElementById("puzzle1");
         var story = document.getElementById("story");
+        var dom = document.getElementById("dom");
         
         window.onclick = function(event) {
-            if (event.target == p1 || event.target == story) {
+            if (event.target == p1 || event.target == story || event.target == dom) {
                 p1.style.display = "none";
                 story.style.display = "none";
+                dom.style.display = "none";
             }
         }
         
@@ -170,10 +183,12 @@
                 document.getElementsByClassName("img")[0].style.backgroundColor = 'black';
                 document.getElementById("flute").style.opacity = 0.0;
                 document.getElementById("lightswitch").style.opacity = 0.05;
+                document.getElementById("chart").style.opacity = 0.0;
             } else {
                 document.getElementsByClassName("img")[0].style.backgroundColor = 'white';
-                document.getElementById("flute").style = 'position: absolute; top: 10%; left: 20%; height:5vh';
+                document.getElementById("flute").style = 'position: absolute; bottom: 10%; left: 8%; height:5vh';
                 document.getElementById("lightswitch").style.opacity = 1.0;
+                document.getElementById("chart").style = "position:absolute; top:20%; left: 10%; height: 60%";
                 if (light == 0) {
                     document.getElementById("my_audio").play();
                 }
@@ -181,8 +196,8 @@
             light += 1;
         }
 
-        var Lb =  document.getElementsByName("Lb")[0];
         var LBb = document.getElementsByName("LBb")[0];
+        var LB =  document.getElementsByName("LB")[0];
         var L1 =  document.getElementsByName("L1")[0];
         var L2 =   document.getElementsByName("L2")[0];
         var L3 =   document.getElementsByName("L3")[0];
@@ -199,9 +214,8 @@
         var RB =   document.getElementsByName("RB")[0];
         var Rb =   document.getElementsByName("Rb")[0];
 
-        var notes = [Lb, LBb, L1, L2, L3, LGS, RBb, R1, RD, R2, RDS, R3, REb, RCS, RC, RB, Rb]
-        var ans   = [0,    0,  1,  1,  1,   0,   0,  0,  0,  0,   0,  0,   0,   0,  0,  0,  0]
-        // var button = document.getElementById("btn");
+        var notes = [LBb, LB, L1, L2, L3, LGS, RBb, R1, RD, R2, RDS, R3, REb, RCS, RC, RB, Rb]
+        var ans   = [  0,  1,  0,  1,  1,   0,   0,  1,  0,  1,   0,  1,   1,   0,  0,  0,  0]
 
         var p1correct = 0;
         function puzzle1() {
@@ -211,16 +225,16 @@
             var count = 0;
             for (let i = 0; i < ans.length; i++) {
                 if (notes[i].checked != ans[i]) {
-                    alert("wrong");
+                    alert("You sound like you need practice.");
                     return
                 }
             }
             p1correct = true;
             alert("a gaping hole appears under your feet.");
             document.getElementById("hole").style.display = "block";
-            // if(b.checked) {
-            //     document.getElementById("door").style.display = "block"
-            // }
+        }
+        function dominoes() {
+            dom.style.display = "block";
         }
     </script>
 
