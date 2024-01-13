@@ -56,6 +56,17 @@
             margin-left: 45%; 
         }
 
+        #hole {
+            height: 10vh;
+            width: 50vw;
+            border-radius: 50%;
+            position: absolute;
+            left: 25%;
+            bottom: 5%;
+            background-color: gray;
+            display: none;
+        }
+
         .container {
             position: relative;
         }
@@ -136,6 +147,10 @@
                 <svg width="5vw" height="12vh"><rect width="100%" height="100%"/></svg>
             </a>
         </div>
+
+        <img src="pics/music/fingeringchart.jpg" style="position:absolute; top:10%; left: 10%; height: 80%">
+
+        <a href="walls.html"> <div id="hole" onclick="click5()"></div> </a>
     </div>
 
     <script>
@@ -166,19 +181,46 @@
             light += 1;
         }
 
-        var b = document.getElementsByName("b")[0];
-        var Bb = document.getElementsByName("Bb")[0];
-        var C = document.getElementsByName("C")[0];
-        var notes = [b, Bb, C]
-        var button = document.getElementById("btn");
+        var Lb =  document.getElementsByName("Lb")[0];
+        var LBb = document.getElementsByName("LBb")[0];
+        var L1 =  document.getElementsByName("L1")[0];
+        var L2 =   document.getElementsByName("L2")[0];
+        var L3 =   document.getElementsByName("L3")[0];
+        var LGS  =  document.getElementsByName("LG#")[0];
+        var RBb =   document.getElementsByName("RBb")[0];
+        var R1 =   document.getElementsByName("R1")[0];
+        var RD  =  document.getElementsByName("RD")[0];
+        var R2 =   document.getElementsByName("R2")[0];
+        var RDS =   document.getElementsByName("RD#")[0];
+        var R3  =  document.getElementsByName("R3")[0];
+        var REb =   document.getElementsByName("REb")[0];
+        var RCS =   document.getElementsByName("RC#")[0];
+        var RC  =  document.getElementsByName("RC")[0];
+        var RB =   document.getElementsByName("RB")[0];
+        var Rb =   document.getElementsByName("Rb")[0];
 
+        var notes = [Lb, LBb, L1, L2, L3, LGS, RBb, R1, RD, R2, RDS, R3, REb, RCS, RC, RB, Rb]
+        var ans   = [0,    0,  1,  1,  1,   0,   0,  0,  0,  0,   0,  0,   0,   0,  0,  0,  0]
+        // var button = document.getElementById("btn");
+
+        var p1correct = 0;
         function puzzle1() {
             p1.style.display = "block";
         }
         function p1q() {
-            if(b.checked) {
-                document.getElementById("door").style.display = "block"
+            var count = 0;
+            for (let i = 0; i < ans.length; i++) {
+                if (notes[i].checked != ans[i]) {
+                    alert("wrong");
+                    return
+                }
             }
+            p1correct = true;
+            alert("a gaping hole appears under your feet.");
+            document.getElementById("hole").style.display = "block";
+            // if(b.checked) {
+            //     document.getElementById("door").style.display = "block"
+            // }
         }
     </script>
 
