@@ -26,14 +26,12 @@ var puzzle2 = document.getElementById("puzzle2");
 var p2table = document.getElementById("puzzle2table");
 var p2text = document.getElementById("puzzle2text");
 var p2explosion = document.getElementById("p2explosion");
-// var puzzle3 = document.getElementById("puzzle3");
 var puzzle4 = document.getElementById("puzzle4");
 var p5map = document.getElementById("p5map");
 var p5sticky = document.getElementById("p5sticky");
 var puzzle6 = document.getElementById("puzzle6");
 var puzzle7 = document.getElementById("puzzle7");
 var puzzle8 = document.getElementById("puzzle8");
-// var puzzle9 = document.getElementById("puzzle9");
 var p9_1 = document.getElementById("p9_1");
 var p9_2 = document.getElementById("p9_2");
 var p9_3 = document.getElementById("p9_3");
@@ -44,7 +42,7 @@ var p9_7 = document.getElementById("p9_7");
 var p9_8 = document.getElementById("p9_8");
 var p9_9 = document.getElementById("p9_9");
 var p9_10 = document.getElementById("p9_10");
-var modals = [story, puzzle2, p2table, p2text, puzzle4, p5map, p5sticky, puzzle6, puzzle7, puzzle8, p2explosion];
+var modals = [story, puzzle2, p2table, p2text, p2explosion, puzzle4, p5map, p5sticky, puzzle6, puzzle7, puzzle8];
 var p9puzz = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10]
 modals.push(...p9puzz);
 
@@ -67,7 +65,6 @@ async function getInfo() {
     puzz7ans = parseInt(lst[18]);
     puzz9ans = lst[19];
 }
-
 window.onload = getInfo;
 
 var p2correct = false;
@@ -120,9 +117,9 @@ function addS() {
     Scount += 1;
     document.getElementById("Scount").innerHTML = Scount;
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function sleep(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
 var p2done_clicked = false;
 function bbon(){
     if (p2correct) {
@@ -222,15 +219,6 @@ function p4() {
         puzzle4.style.display = "block";
     }
 }
-// var p4ans = {
-//     'A': "3",
-//     'D': "6",
-//     'E': "1",
-//     'H': "4",
-//     'J': "5",
-//     'N': "7",
-//     'S': "2"
-// };
 var friendct = 7;
 function puzzle4check() {
     if (p4correct) {
@@ -374,7 +362,6 @@ function meat() {
         meat_count += 1;
         document.getElementById("p7meat").style.display = "block";
     } 
-    // document.getElementById("ordernumtest").innerHTML = meat_count;
     need_order = meat_count % 12 == 0
     if (need_order && meat_count!= 60) {
         document.getElementById("order").style.display = "block";
@@ -584,7 +571,6 @@ window.onclick = function(event) {
         puzzle2.style.display = "none";
         p2table.style.display = "none";
         p2text.style.display = "none";
-        // puzzle3.style.display = "none";
         puzzle4.style.display = "none";
         p5map.style.display = "none";
         p5sticky.style.display = "none";
