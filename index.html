@@ -257,6 +257,7 @@
             for (let i = 0; i < ans.length; i++) {
                 if (notes[i].checked != ans[i]) {
                     alert("It sounds like you need practice.");
+                    document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
                     return
                 }
             }

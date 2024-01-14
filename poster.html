@@ -8,7 +8,6 @@
         * {box-sizing: border-box}
         body {font-family: Verdana, sans-serif; margin:0; height:100%}
         rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.5}
-        li { padding: 5px 0px; }
 
         .img {
             background-color: white;
@@ -88,7 +87,7 @@
     </div>
 
     <script>
-        // var story = document.getElementById("story");
+        var story = document.getElementById("story");
         var story2 = document.getElementById("story2");
         
         window.onclick = function(event) {
@@ -101,11 +100,7 @@
             else if (event.target == story2) {
                 story2.style.display = "none";
             }
-        }
-        // story2.addEventListener('onclick', function() {
-        //     alert("clicked")
-        // })
-        
+        }        
     </script>
 
 </body>

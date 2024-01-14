@@ -21,6 +21,7 @@ function showSlides(n) {
 }
 
 // modals
+var story = document.getElementById("story");
 var puzzle2 = document.getElementById("puzzle2");
 var p2table = document.getElementById("puzzle2table");
 var p2text = document.getElementById("puzzle2text");
@@ -43,6 +44,9 @@ var p9_7 = document.getElementById("p9_7");
 var p9_8 = document.getElementById("p9_8");
 var p9_9 = document.getElementById("p9_9");
 var p9_10 = document.getElementById("p9_10");
+var modals = [story, puzzle2, p2table, p2text, puzzle4, p5map, p5sticky, puzzle6, puzzle7, puzzle8, p2explosion];
+var p9puzz = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10]
+modals.push(...p9puzz);
 
 var p2correct = false;
 var p3correct = false;
@@ -108,7 +112,7 @@ function bbon(){
         p2correct = true;
         document.getElementById("p2good").style = "position: absolute; top: 50%; left: 50%; height:100%; transform: translate(-50%, -50%);";
         // sleep(3000).then(() => { document.getElementById("p2good").style = "display:none" });
-        alert("(Mr. Walz would be disappointed you didn't wear goggles, but…) The experiment was a success! Somehow that combination of elements created something you might be able to use to get out. You placed it in your bag.");
+        alert("(Mr. Walz would be disappointed you didn't wear goggles, but...) The experiment was a success! Somehow that combination of elements created something you might be able to use to get out. You place it in your bag.");
         numcorrect += 1;
         if (numcorrect == 7) changebkgnd();
     }
@@ -128,13 +132,16 @@ function bbon(){
     }
 }
 
-// puzzle 3
 var rifle_active = false;
 var rifle_found = false;
 document.onkeydown = key_alert;
 function key_alert(e) {
     if (`${e.code}` == "KeyS") {
-        if (rifle_found) {
+        var anyshown = false;
+        for(let i = 0; i < modals.length; i++) {
+            if (modals[i].style.display == "block") anyshown = true;
+        }
+        if (rifle_found && !anyshown) {
             if (rifle_active) {
                 document.getElementById("rifle").style.display = "block";
                 document.body.style.cursor="default";
@@ -142,7 +149,6 @@ function key_alert(e) {
             } else {
                 document.getElementById("rifle").style.display = "none";
                 document.body.style.cursor="crosshair";
-                // enable shooting and disable all other clicks
                 rifle_active = true;
             }
         }
@@ -158,7 +164,7 @@ for (let i = 0; i < all.length; i++) {
         if (rifle_active){
             if (e.target.id == "flip") {
                 if (p3correct) {
-                    alert("You can move on from this.")
+                    alert("Feel free to keep shooting, but no more pieces are coming off.")
                     return
                 }
                 alert("Oh yeah... that's the one.")
@@ -258,11 +264,11 @@ function p5note() {
 }
 function puzzle5() {
     if (p5correct) {
-        alert("You can move on from this.")
+        alert("There is nothing else in here.")
         return
     }
     if (!rifle_active) {
-        var p5ans = prompt("The briefcase is locked. The lock combination is made up of letters. You see a luggage tag that says “You have traveled all over the world - what is your most prized possession?");
+        var p5ans = prompt('This briefcase is locked. The lock combination is made up of letters. You see a luggage tag that says "You have traveled all over the world - what is your most prized possession?"');
         if (p5ans.toLowerCase() == "peanut") {
             p5correct = true;
             alert("The briefcase opened, and you put its contents inside of your bag.");
@@ -299,21 +305,22 @@ w5.addEventListener("keypress", function(event) {
 });
 function puzzle6q(){
     if (p6correct) {
-        alert("You can move on from this.")
+        alert("You've already taken what you needed.")
         return
     }
-    var c1 = w1.value.toLowerCase() == 'e'
-    var c2 = w2.value.toLowerCase() == 'n'
-    var c3 = w3.value.toLowerCase() == 'a'
-    var c4 = w4.value.toLowerCase() == 'u'
-    var c5 = w5.value.toLowerCase() == 'r'
-    if (c1 && c2 && c3 && c4 && c5) {
+    var c1 = w1.value.toLowerCase() 
+    var c2 = w2.value.toLowerCase() 
+    var c3 = w3.value.toLowerCase()
+    var c4 = w4.value.toLowerCase()
+    var c5 = w5.value.toLowerCase()
+    if (c1 == 'e' && c2 == 'n' && c3 == 'a' && c4 == 'u' && c5 == 'r') {
         p6correct = true;
         alert("You solved the wordle correctly, but you realize that you only needed this phone because there was something hidden in the case. You put it in your bag.");
         numcorrect += 1;
         if (numcorrect == 7) changebkgnd();
     } else {
-        alert("Wordle 114 X/6");
+        if (c1 == '' || c2 == '' || c3 == '' || c4 == '' || c5 == '') alert("Not enough letters")
+        else alert("Wordle 114 X/6");
         form.reset();
     }
 }
@@ -326,6 +333,10 @@ function p7() {
     }
 }
 function kimchi() {
+    if (p7correct) {
+        alert("This restaurant is out of business. You can't eat any more kimchi here (not that you ever should've).")
+        return
+    }
     meat_count = 0;
     document.getElementById("order").style.display = "block";
     document.getElementById("p7meat").style.display = "none";
@@ -333,24 +344,30 @@ function kimchi() {
     // document.getElementById("ordernumtest").innerHTML = meat_count;
 }
 function meat() {
+    if (p7correct) {
+        alert("This restaurant is out of business. You can't eat any more meat here.")
+        return
+    }
     if (!need_order) {
         meat_count += 1;
         document.getElementById("p7meat").style.display = "block";
     } 
     // document.getElementById("ordernumtest").innerHTML = meat_count;
     need_order = meat_count % 12 == 0
-    if (need_order) {
+    if (need_order && meat_count!= 60) {
         document.getElementById("order").style.display = "block";
         need_order = true;
     }
     if (meat_count == 60 && !p7correct) {
-        alert("You won a prize and you put it into your bag.");
+        alert("You won a prize and you put it into your bag. Unfortunately, you have also put the restaurant out of business.");
         p7correct = true;
         numcorrect += 1;
         if (numcorrect == 7) changebkgnd();
     }
-    if (meat_count > 60) {
-        alert("You could've (should've) stopped at 60... now you feel some of the meat you just ate about to come back up.")
+}
+function veg() {
+    if (p7correct) {
+        alert("This restaurant is out of business. You can't eat any more vegetables here.")
     }
 }
 function order() {
@@ -372,7 +389,6 @@ function p8() {
 }
 
 // PICTURE HERE
-
 // puzzle starts at (20, 120) and is 368 x 490 px tall
 // each piece is 70 px tall
 // order: 2 4 6 9 3 7 5
@@ -394,9 +410,9 @@ function p8check() {
         p8correct = true;
         document.getElementById("sesame").style.display = "block"
         document.getElementById("door").style.display = "none"
-        alert("You hear the lock click in the door, and you jiggle the handle. It opens!")
+        alert("You hold up this picture to the lock on the door. To your surprise, you hear the lock click, and you jiggle the handle. It opens!")
     } 
-    else alert("You can do better than that.");
+    else alert("This doesn't look right.");
 }
 
 var t1 = document.getElementById("t1");
@@ -416,6 +432,8 @@ function p9playpause() {
         if (!p9correct) {
             if (playlist[index].paused) { playlist[index].play(); }
             else { playlist[index].pause(); }
+        } else {
+            alert("This CD player doesn't work anymore.")
         }
     }
 }
@@ -427,10 +445,13 @@ function p9skip() {
         if (index == playlist.length-1) { allplayed = true; }
         playlist[index].play();
     }
+    if (p9correct) {
+        alert("This CD player doesn't work anymore.")
+    }
 }
 function p9eject() {
     if (p9correct) {
-        alert("You can move on from this.")
+        alert("There is nothing in here anymore.")
         return
     }
     if (!rifle_active) {
@@ -456,7 +477,6 @@ for (let i = 0; i < p9aud.length; i++) {
         playlist[index].play();
     });
 }
-var p9puzz = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10]
 function clck(i){
     if (!rifle_active) {
         p9puzz[i-1].style.display = "block"
@@ -536,9 +556,9 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-var modals = [puzzle2, p2table, p2text, puzzle4, p5map, p5sticky, puzzle6, puzzle7, puzzle8, p2explosion];
 window.onclick = function(event) {
-    if (modals.includes(event.target) || p9puzz.includes(event.target)) {
+    if (modals.includes(event.target)) {
+        story.style.display = "none";
         puzzle2.style.display = "none";
         p2table.style.display = "none";
         p2text.style.display = "none";

@@ -29,11 +29,6 @@ rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.0}
     height: 70vh;
 }
 
-.pocket-image {
-    margin: auto;
-    height: 40vh;
-}
-
 .p3img {
     position: absolute;
     height: 120px;
@@ -47,11 +42,6 @@ rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.0}
 .p4mimg {
     height:10vh; 
     display:none;
-}
-
-.puzzle5-image {
-    width: 15vw;
-    position: absolute;
 }
 
 #puzzle7-image {
