@@ -420,7 +420,7 @@ function p9playpause() {
     }
 }
 function p9skip() {
-    if (!rifle_active) {
+    if (!rifle_active && !playlist[index].paused) {
         playlist[index].pause();
         playlist[index].currentTime = 0;
         index = (index + 1) % playlist.length;
@@ -460,6 +460,12 @@ var p9puzz = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10]
 function clck(i){
     if (!rifle_active) {
         p9puzz[i-1].style.display = "block"
+    }
+}
+
+function d() {
+    if (!rifle_active) {
+        alert("The lock on this door employs facial recognition software and won't open for you.")
     }
 }
 
@@ -557,6 +563,7 @@ window.onclick = function(event) {
     }
     if (event.target.id == "puzzle2") {
         if (!p2done_clicked && !p2correct) {
+            if (Hcount == 0 && Ocount == 0 && Ccount == 0 && Ncount == 0 && Scount == 0) return
             alert('Walz yelled at you for turning your back on an open flame. He forced you to discard your solution and to turn off the Bunsen burner.')
             Hcount = 0;
             Ocount = 0;
