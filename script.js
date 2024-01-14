@@ -48,6 +48,28 @@ var modals = [story, puzzle2, p2table, p2text, puzzle4, p5map, p5sticky, puzzle6
 var p9puzz = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7, p9_8, p9_9, p9_10]
 modals.push(...p9puzz);
 
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxJrpTZxhHwGw-s5v7swToerdzJUXd95aLlkfuKwWDMo7nfpSArBkrwbrNzxIlMKdpdUw/exec'
+var puzz2ans;
+var puzz4ans;
+var puzz5ans;
+var puzz6ans;
+var puzz7ans;
+var puzz9ans;
+
+async function getInfo() {
+    let response = await fetch(scriptURL, {method: 'GET'});
+    let responseText = await response.text();
+    var lst = responseText.split(',');
+    puzz2ans = [parseInt(lst[0]), parseInt(lst[1]), parseInt(lst[2]), parseInt(lst[3]), parseInt(lst[4])];
+    puzz4ans = [lst[5], lst[6], lst[7], lst[8], lst[9], lst[10], lst[11]];
+    puzz5ans = lst[12];
+    puzz6ans = [lst[13], lst[14], lst[15], lst[16], lst[17]];
+    puzz7ans = parseInt(lst[18]);
+    puzz9ans = lst[19];
+}
+
+window.onload = getInfo;
+
 var p2correct = false;
 var p3correct = false;
 var p4correct = false;
@@ -108,7 +130,7 @@ function bbon(){
         return
     }
     p2done_clicked = true;
-    if (Hcount == 5 && Ocount == 6 && Ccount == 7 && Ncount == 5 && Scount == 0) {
+    if (Hcount == puzz2ans[0] && Ocount == puzz2ans[2] && Ccount == puzz2ans[3] && Ncount == puzz2ans[4] && Scount == puzz2ans[1]) {
         p2correct = true;
         document.getElementById("p2good").style = "position: absolute; top: 50%; left: 50%; height:100%; transform: translate(-50%, -50%);";
         // sleep(3000).then(() => { document.getElementById("p2good").style = "display:none" });
@@ -200,15 +222,15 @@ function p4() {
         puzzle4.style.display = "block";
     }
 }
-var p4ans = {
-    'A': "3",
-    'D': "6",
-    'E': "1",
-    'H': "4",
-    'J': "5",
-    'N': "7",
-    'S': "2"
-};
+// var p4ans = {
+//     'A': "3",
+//     'D': "6",
+//     'E': "1",
+//     'H': "4",
+//     'J': "5",
+//     'N': "7",
+//     'S': "2"
+// };
 var friendct = 7;
 function puzzle4check() {
     if (p4correct) {
@@ -235,13 +257,13 @@ function puzzle4check() {
         alert("Gotta collect them all...")
         return
     }            
-    if(a.value == p4ans['A']) { count++; }
-    if(d.value == p4ans['D']) { count++; }
-    if(e.value == p4ans['E']) { count++; }
-    if(h.value == p4ans['H']) { count++; }
-    if(j.value == p4ans['J']) { count++; }
-    if(n.value == p4ans['N']) { count++; }
-    if(s.value == p4ans['S']) { count++; }
+    if(a.value == puzz4ans[0]) { count++; }
+    if(d.value == puzz4ans[1]) { count++; }
+    if(e.value == puzz4ans[2]) { count++; }
+    if(h.value == puzz4ans[3]) { count++; }
+    if(j.value == puzz4ans[4]) { count++; }
+    if(n.value == puzz4ans[5]) { count++; }
+    if(s.value == puzz4ans[6]) { count++; }
     if (count == friendct) {
         p4correct = true;
         alert("Your friendship proves true and you win a prize. You put it in your bag.");
@@ -269,7 +291,7 @@ function puzzle5() {
     }
     if (!rifle_active) {
         var p5ans = prompt('This briefcase is locked. The lock combination is made up of letters. You see a luggage tag that says "You have traveled all over the world - what is your most prized possession?"');
-        if (p5ans.toLowerCase() == "peanut") {
+        if (p5ans.toLowerCase() == puzz5ans) {
             p5correct = true;
             alert("The briefcase opened, and you put its contents inside of your bag.");
             numcorrect += 1;
@@ -313,7 +335,7 @@ function puzzle6q(){
     var c3 = w3.value.toLowerCase()
     var c4 = w4.value.toLowerCase()
     var c5 = w5.value.toLowerCase()
-    if (c1 == 'e' && c2 == 'n' && c3 == 'a' && c4 == 'u' && c5 == 'r') {
+    if (c1 == puzz6ans[0] && c2 == puzz6ans[1] && c3 == puzz6ans[2] && c4 == puzz6ans[3] && c5 == puzz6ans[4]) {
         p6correct = true;
         alert("You solved the wordle correctly, but you realize that you only needed this phone because there was something hidden in the case. You put it in your bag.");
         numcorrect += 1;
@@ -358,7 +380,7 @@ function meat() {
         document.getElementById("order").style.display = "block";
         need_order = true;
     }
-    if (meat_count == 60 && !p7correct) {
+    if (meat_count == puzz7ans && !p7correct) {
         alert("You won a prize and you put it into your bag. Unfortunately, you have also put the restaurant out of business.");
         p7correct = true;
         numcorrect += 1;
@@ -457,7 +479,7 @@ function p9eject() {
     if (!rifle_active) {
         if (allplayed) {
             var p9ans = prompt("Something's missing...");
-            if (p9ans == "16") {
+            if (p9ans == puzz9ans) {
                 p9correct = true;
                 alert("The music stops, and out comes something you put into your bag.");
                 playlist[index].pause();
